@@ -32,58 +32,57 @@ import {
   Center,
   Heading,
   Tag,
-  useToast,
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { isLogin } from "../../Redux/logger/action";
-import { hoverColor } from "../Variables";
+// import { useSelector, useDispatch } from "react-redux";
+// import { isLogin } from "../../Redux/logger/action";
+// import { hoverColor } from "../Variables";
 
 function Navbar() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 992px)");
   const [isLargerThan576] = useMediaQuery("(min-width: 576px)");
   const Navigate = useNavigate();
-  const isLoginObj = useSelector((store) => store.isLogin.isLogin);
-  const toast = useToast();
-  const dispatch = useDispatch();
+  // const isLoginObj = useSelector((store) => store.isLogin.isLogin);
+  // const toast = useToast();
+  // const dispatch = useDispatch();
 
-  const handleSignout = (e) => {
-    localStorage.setItem(
-      "loginUser",
-      JSON.stringify({
-        token: "",
-        user: { firstName: "", lastName: "", email: "" },
-      })
-    );
-    setTimeout(() => {
-      Navigate("/signin");
-    }, 3000);
-    dispatch(
-      isLogin({
-        token: "",
-        user: { firstName: "", lastName: "", email: "" },
-      })
-    );
-    toast({
-      title: "Signout Successfull !!!",
-      status: "success",
-      duration: 2000,
-      isClosable: true,
-      position: "top",
-    });
-  };
+  // const handleSignout = (e) => {
+  //   localStorage.setItem(
+  //     "loginUser",
+  //     JSON.stringify({
+  //       token: "",
+  //       user: { firstName: "", lastName: "", email: "" },
+  //     })
+  //   );
+  //   setTimeout(() => {
+  //     Navigate("/signin");
+  //   }, 3000);
+  //   dispatch(
+  //     isLogin({
+  //       token: "",
+  //       user: { firstName: "", lastName: "", email: "" },
+  //     })
+  //   );
+  //   toast({
+  //     title: "Signout Successfull !!!",
+  //     status: "success",
+  //     duration: 2000,
+  //     isClosable: true,
+  //     position: "top",
+  //   });
+  // };
 
-  const handleTrip = () => {
-    if (isLoginObj.token !== "") Navigate("/trips");
-    else
-      toast({
-        title: "Please Sign in !!!",
-        status: "info",
-        duration: 2000,
-        isClosable: true,
-        position: "top",
-      });
-  };
+  // const handleTrip = () => {
+  //   if (isLoginObj.token !== "") Navigate("/trips");
+  //   else
+  //     toast({
+  //       title: "Please Sign in !!!",
+  //       status: "info",
+  //       duration: 2000,
+  //       isClosable: true,
+  //       position: "top",
+  //     });
+  // };
   const UserLoginSection = () => {
     return (
       <PopoverContent>
@@ -100,18 +99,22 @@ function Navbar() {
             Sign in
           </Button>
           <Link to="/signup" mt={5}>
-            <Text _hover={{ color: hoverColor }}>Create a free account</Text>
+            <Text >Create a free account</Text>
+
+            {/* _hover={{ color: hoverColor }} */}
           </Link>
           <Link mt={5} to="/favourite">
-            <Text _hover={{ color: hoverColor }}>Lists of favourites</Text>
+            <Text >Lists of favourites</Text>
+
+            {/* _hover={{ color: hoverColor }} */}
           </Link>
           <Link to="/rewards" mt={5}>
-            <Text _hover={{ color: hoverColor }}>Expedia rewards</Text>
+            <Text >Expedia rewards</Text>
           </Link>
         </PopoverBody>
         <PopoverFooter>
           <Link to="/feedback" mt={5}>
-            <Text _hover={{ color: hoverColor }}>Feedback</Text>
+            <Text >Feedback</Text>
           </Link>
         </PopoverFooter>
       </PopoverContent>
@@ -124,11 +127,13 @@ function Navbar() {
         <PopoverCloseButton />
         <PopoverHeader>
           <Center mb="2">
-            <Heading size="md">Hi, {isLoginObj.user.firstName}</Heading>
+            <Heading size="md">Hi, 
+            {/* {isLoginObj.user.firstName} */}
+            </Heading>
           </Center>
           <Center mb="2">
             <Heading as="h6" size="xs">
-              {isLoginObj.user.email}
+              {/* {isLoginObj.user.email} */}
             </Heading>
           </Center>
           <Center mb="2">
@@ -149,9 +154,9 @@ function Navbar() {
             <Button
               w="100%"
               colorScheme="blue"
-              onClick={(e) => {
-                handleSignout(e);
-              }}
+              // onClick={(e) => {
+              //   handleSignout(e);
+              // }}
             >
               Sign out
             </Button>
@@ -185,48 +190,50 @@ function Navbar() {
                 </Link>
                 {isLargerThan576 ? (
                   <Menu>
-                    <MenuButton _hover={{ color: hoverColor }}>
+                    <MenuButton >
+
+                    {/* _hover={{ color: hoverColor }} */}
                       More travel <ChevronDownIcon />
                     </MenuButton>
                     <Portal>
                       <MenuList>
                         <MenuItem
-                          _hover={{ color: hoverColor }}
+                         
                           icon={<BsBuilding />}
                         >
                           Stays
                         </MenuItem>
                         <MenuItem
-                          _hover={{ color: hoverColor }}
+                         
                           icon={<MdOutlineFlight />}
                         >
                           Flights
                         </MenuItem>
                         <MenuItem
-                          _hover={{ color: hoverColor }}
+                          
                           icon={<FaCarSide />}
                         >
                           Cars
                         </MenuItem>
                         <MenuItem
-                          _hover={{ color: hoverColor }}
+                        
                           icon={<VscMultipleWindows />}
                         >
                           Packages
                         </MenuItem>
                         <MenuItem
-                          _hover={{ color: hoverColor }}
+                      
                           icon={<MdOutlineHolidayVillage />}
                         >
                           Holiday activities
                         </MenuItem>
-                        <MenuItem _hover={{ color: hoverColor }}>
+                        <MenuItem >
                           Deals
                         </MenuItem>
-                        <MenuItem _hover={{ color: hoverColor }}>
+                        <MenuItem >
                           Groups and meetings
                         </MenuItem>
-                        <MenuItem _hover={{ color: hoverColor }}>
+                        <MenuItem >
                           Mobile
                         </MenuItem>
                       </MenuList>
@@ -239,36 +246,39 @@ function Navbar() {
             <Box p="4">
               {isLargerThan1280 ? (
                 <Stack direction="row" spacing={8} align="center" p="1">
-                  <Text _hover={{ color: hoverColor }}>
+                  <Text >
                     <Link to="/language">
                       <Icon as={BiWorld} w={3.5} h={3.5} />
                       &nbsp; English
                     </Link>
                   </Text>
-                  <Text _hover={{ color: hoverColor }}>
+                  <Text >
                     <Link to="/support">Support</Link>
                   </Text>
                   <Text
                     cursor="pointer"
-                    _hover={{ color: hoverColor }}
-                    onClick={() => handleTrip()}
+                    
+                    // onClick={() => handleTrip()}
                   >
                     Trips
                   </Text>
                   <Popover>
                     <PopoverTrigger>
-                      <Text cursor="pointer" _hover={{ color: hoverColor }}>
-                        {isLoginObj.token !== ""
+                      <Text cursor="pointer">
+
+                        {/* {isLoginObj.token !== ""
                           ? isLoginObj.user.firstName
-                          : "Sign in"}
+                          : "Sign in"} */}
+
                       </Text>
                     </PopoverTrigger>
                     <Portal>
-                      {isLoginObj.token !== "" ? (
+                    
                         <SignInSignOutSection />
-                      ) : (
+                      
+                      
                         <UserLoginSection />
-                      )}
+                    
                     </Portal>
                   </Popover>
                 </Stack>
@@ -304,7 +314,7 @@ function Navbar() {
                     objectFit="cover"
                     src="https://w7.pngwing.com/pngs/751/12/png-transparent-computer-icons-business-briefcase-suitcase-rectangle-people-suitcase.png"
                     alt="Dan Abramov"
-                    onClick={() => handleTrip()}
+                    // onClick={() => handleTrip()}
                   />
                   <Popover>
                     <PopoverTrigger>
@@ -315,11 +325,11 @@ function Navbar() {
                       />
                     </PopoverTrigger>
                     <Portal>
-                      {isLoginObj.token !== "" ? (
+                      {/* {isLoginObj.token !== "" ? (
                         <SignInSignOutSection />
                       ) : (
                         <UserLoginSection />
-                      )}
+                      )} */}
                     </Portal>
                   </Popover>
                 </Stack>
@@ -333,3 +343,11 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
+// {isLoginObj.token !== "" ? (
+//   <SignInSignOutSection />
+// ) 
+// : (
+//   <UserLoginSection />
+// )}

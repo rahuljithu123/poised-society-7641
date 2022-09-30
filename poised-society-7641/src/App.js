@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
-import { Footer } from './Components/Footer';
+import Footer from './Components/Footer';
 import AllRoutes from './Components/AllRoutes';
 
 // function App() {
