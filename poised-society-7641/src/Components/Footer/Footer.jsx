@@ -211,18 +211,10 @@ function Footer() {
         </Flex>
       </Box>
       <Container maxW="container.xl" borderTop="1px" borderTopColor="#c5c7cc">
-        <Box p="5">
-          <Center>
-            <Image
-              w="200px"
-              src="https://images.trvl-media.com/media/content/expind/images/sg/secure.png"
-            />
-          </Center>
-          <Text fontSize="xs">
-            © 2022 Expedia, Inc., an Expedia Group company / Expedia Asia
-            Holdings Mauritius / BEX Travel Asia Pte. Ltd. All rights reserved.
-            Expedia and the Airplane Logo are trademarks or registered
-            trademarks of Expedia, Inc.
+        <Box p="5" textAlign="center">
+         
+         <Text fontSize="xs">Expedia, Inc. is not responsible for content on external Web sites.</Text>
+          <Text fontSize="xs">© 2022 Expedia, Inc., an Expedia Group company. All rights reserved. Expedia and the Airplane Logo are trademarks or registered trademarks of Expedia, Inc. CST# 2029030-50.
           </Text>
         </Box>
       </Container>
