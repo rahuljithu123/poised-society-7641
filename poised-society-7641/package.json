@@ -2,6 +2,7 @@
   "name": "expedia-frontend-clone",
   "version": "0.1.0",
   "private": true,
+  "homepage":".",
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "^1.8.7",
@@ -51,4 +52,5 @@
       "last 1 safari version"
     ]
   }
+
 }

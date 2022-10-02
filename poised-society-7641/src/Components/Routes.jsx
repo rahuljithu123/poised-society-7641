@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Main from "./Home/Main";
 
-import NotFound from "./NotFound";
+
 
 import SignUp from "./SignUp/SignUp";
 import SignIn from "./SignIn/SignIn";
@@ -24,7 +24,7 @@ function AllRoutes() {
     
   
      
-      <Route path="*" element={<NotFound />}></Route>
+     
     </Routes>
   );
 }

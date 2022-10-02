@@ -146,7 +146,7 @@ function Main() {
           <InputGroup>
             <Popover>
               <PopoverTrigger>
-                <Button>
+              <Button>
                   Travellers :-{" "}
                   {isLargerThan492
                     ? ` ${stayData.room} room , ${

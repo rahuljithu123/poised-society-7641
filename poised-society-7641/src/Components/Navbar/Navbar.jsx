@@ -91,7 +91,8 @@ function Navbar() {
         <PopoverArrow />
         <PopoverCloseButton />
         <PopoverBody>
-          <Text mt={5}>Members can access discounts and special features</Text>
+          <Image src="https://a.travel-assets.com/pricing-claim/sparkle_white.svg" />
+          <Text mt={5}>Save an average of 15% on thousands of hotels when you're signed in</Text>
           <Button
             mt={5}
             w="100%"
