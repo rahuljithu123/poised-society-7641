@@ -2,6 +2,7 @@ import React from "react";
 import { ChevronDownIcon, Search2Icon } from "@chakra-ui/icons";
 import { BiWorld } from "react-icons/bi";
 import { BsBuilding } from "react-icons/bs";
+import {BiBell} from "react-icons/bi"
 import { MdOutlineFlight, MdOutlineHolidayVillage } from "react-icons/md";
 import { FaCarSide } from "react-icons/fa";
 import { VscMultipleWindows } from "react-icons/vsc";
@@ -32,57 +33,58 @@ import {
   Center,
   Heading,
   Tag,
+  useToast,
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
-// import { isLogin } from "../../Redux/logger/action";
-// import { hoverColor } from "../Variables";
+import { useSelector, useDispatch } from "react-redux";
+import { isLogin } from "../../Redux/logger/action";
+import { hoverColor } from "../Variables";
 
 function Navbar() {
   const [isLargerThan1280] = useMediaQuery("(min-width: 992px)");
   const [isLargerThan576] = useMediaQuery("(min-width: 576px)");
   const Navigate = useNavigate();
-  // const isLoginObj = useSelector((store) => store.isLogin.isLogin);
-  // const toast = useToast();
-  // const dispatch = useDispatch();
+  const isLoginObj = useSelector((store) => store.isLogin.isLogin);
+  const toast = useToast();
+  const dispatch = useDispatch();
 
-  // const handleSignout = (e) => {
-  //   localStorage.setItem(
-  //     "loginUser",
-  //     JSON.stringify({
-  //       token: "",
-  //       user: { firstName: "", lastName: "", email: "" },
-  //     })
-  //   );
-  //   setTimeout(() => {
-  //     Navigate("/signin");
-  //   }, 3000);
-  //   dispatch(
-  //     isLogin({
-  //       token: "",
-  //       user: { firstName: "", lastName: "", email: "" },
-  //     })
-  //   );
-  //   toast({
-  //     title: "Signout Successfull !!!",
-  //     status: "success",
-  //     duration: 2000,
-  //     isClosable: true,
-  //     position: "top",
-  //   });
-  // };
+  const handleSignout = (e) => {
+    localStorage.setItem(
+      "loginUser",
+      JSON.stringify({
+        token: "",
+        user: { firstName: "", lastName: "", email: "" },
+      })
+    );
+    setTimeout(() => {
+      Navigate("/signin");
+    }, 3000);
+    dispatch(
+      isLogin({
+        token: "",
+        user: { firstName: "", lastName: "", email: "" },
+      })
+    );
+    toast({
+      title: "Signout Successfull !!!",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+      position: "top",
+    });
+  };
 
-  // const handleTrip = () => {
-  //   if (isLoginObj.token !== "") Navigate("/trips");
-  //   else
-  //     toast({
-  //       title: "Please Sign in !!!",
-  //       status: "info",
-  //       duration: 2000,
-  //       isClosable: true,
-  //       position: "top",
-  //     });
-  // };
+  const handleTrip = () => {
+    if (isLoginObj.token !== "") Navigate("/trips");
+    else
+      toast({
+        title: "Please Sign in !!!",
+        status: "info",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+  };
   const UserLoginSection = () => {
     return (
       <PopoverContent>
@@ -99,22 +101,18 @@ function Navbar() {
             Sign in
           </Button>
           <Link to="/signup" mt={5}>
-            <Text >Create a free account</Text>
-
-            {/* _hover={{ color: hoverColor }} */}
+            <Text _hover={{ color: hoverColor }}>Create a free account</Text>
           </Link>
           <Link mt={5} to="/favourite">
-            <Text >Lists of favourites</Text>
-
-            {/* _hover={{ color: hoverColor }} */}
+            <Text _hover={{ color: hoverColor }}>Lists of favourites</Text>
           </Link>
           <Link to="/rewards" mt={5}>
-            <Text >Expedia rewards</Text>
+            <Text _hover={{ color: hoverColor }}>Expedia rewards</Text>
           </Link>
         </PopoverBody>
         <PopoverFooter>
           <Link to="/feedback" mt={5}>
-            <Text >Feedback</Text>
+            <Text _hover={{ color: hoverColor }}>Feedback</Text>
           </Link>
         </PopoverFooter>
       </PopoverContent>
@@ -127,13 +125,11 @@ function Navbar() {
         <PopoverCloseButton />
         <PopoverHeader>
           <Center mb="2">
-            <Heading size="md">Hi, 
-            {/* {isLoginObj.user.firstName} */}
-            </Heading>
+            <Heading size="md">Hi, {isLoginObj.user.firstName}</Heading>
           </Center>
           <Center mb="2">
             <Heading as="h6" size="xs">
-              {/* {isLoginObj.user.email} */}
+              {isLoginObj.user.email}
             </Heading>
           </Center>
           <Center mb="2">
@@ -154,9 +150,9 @@ function Navbar() {
             <Button
               w="100%"
               colorScheme="blue"
-              // onClick={(e) => {
-              //   handleSignout(e);
-              // }}
+              onClick={(e) => {
+                handleSignout(e);
+              }}
             >
               Sign out
             </Button>
@@ -190,50 +186,48 @@ function Navbar() {
                 </Link>
                 {isLargerThan576 ? (
                   <Menu>
-                    <MenuButton >
-
-                    {/* _hover={{ color: hoverColor }} */}
+                    <MenuButton _hover={{ color: hoverColor }}>
                       More travel <ChevronDownIcon />
                     </MenuButton>
                     <Portal>
                       <MenuList>
                         <MenuItem
-                         
+                          _hover={{ color: hoverColor }}
                           icon={<BsBuilding />}
                         >
                           Stays
                         </MenuItem>
                         <MenuItem
-                         
+                          _hover={{ color: hoverColor }}
                           icon={<MdOutlineFlight />}
                         >
                           Flights
                         </MenuItem>
                         <MenuItem
-                          
+                          _hover={{ color: hoverColor }}
                           icon={<FaCarSide />}
                         >
                           Cars
                         </MenuItem>
                         <MenuItem
-                        
+                          _hover={{ color: hoverColor }}
                           icon={<VscMultipleWindows />}
                         >
                           Packages
                         </MenuItem>
                         <MenuItem
-                      
+                          _hover={{ color: hoverColor }}
                           icon={<MdOutlineHolidayVillage />}
                         >
                           Holiday activities
                         </MenuItem>
-                        <MenuItem >
+                        <MenuItem _hover={{ color: hoverColor }}>
                           Deals
                         </MenuItem>
-                        <MenuItem >
+                        <MenuItem _hover={{ color: hoverColor }}>
                           Groups and meetings
                         </MenuItem>
-                        <MenuItem >
+                        <MenuItem _hover={{ color: hoverColor }}>
                           Mobile
                         </MenuItem>
                       </MenuList>
@@ -246,39 +240,40 @@ function Navbar() {
             <Box p="4">
               {isLargerThan1280 ? (
                 <Stack direction="row" spacing={8} align="center" p="1">
-                  <Text >
+                  <Text _hover={{ color: hoverColor }}>
                     <Link to="/language">
                       <Icon as={BiWorld} w={3.5} h={3.5} />
                       &nbsp; English
                     </Link>
                   </Text>
-                  <Text >
+                  <Text _hover={{ color: hoverColor }}>
+                    <Link to="/support">List your Property</Link>
+                  </Text>
+                  <Text _hover={{ color: hoverColor }}>
                     <Link to="/support">Support</Link>
                   </Text>
                   <Text
                     cursor="pointer"
-                    
-                    // onClick={() => handleTrip()}
+                    _hover={{ color: hoverColor }}
+                    onClick={() => handleTrip()}
                   >
                     Trips
                   </Text>
+                  <Icon as={BiBell} w={3.5} h={3.5} />
                   <Popover>
                     <PopoverTrigger>
-                      <Text cursor="pointer">
-
-                        {/* {isLoginObj.token !== ""
+                      <Text cursor="pointer" _hover={{ color: hoverColor }}>
+                        {isLoginObj.token !== ""
                           ? isLoginObj.user.firstName
-                          : "Sign in"} */}
-
+                          : "Sign in"}
                       </Text>
                     </PopoverTrigger>
                     <Portal>
-                    
+                      {isLoginObj.token !== "" ? (
                         <SignInSignOutSection />
-                      
-                      
+                      ) : (
                         <UserLoginSection />
-                    
+                      )}
                     </Portal>
                   </Popover>
                 </Stack>
@@ -314,7 +309,7 @@ function Navbar() {
                     objectFit="cover"
                     src="https://w7.pngwing.com/pngs/751/12/png-transparent-computer-icons-business-briefcase-suitcase-rectangle-people-suitcase.png"
                     alt="Dan Abramov"
-                    // onClick={() => handleTrip()}
+                    onClick={() => handleTrip()}
                   />
                   <Popover>
                     <PopoverTrigger>
@@ -325,11 +320,11 @@ function Navbar() {
                       />
                     </PopoverTrigger>
                     <Portal>
-                      {/* {isLoginObj.token !== "" ? (
+                      {isLoginObj.token !== "" ? (
                         <SignInSignOutSection />
                       ) : (
                         <UserLoginSection />
-                      )} */}
+                      )}
                     </Portal>
                   </Popover>
                 </Stack>
@@ -343,11 +338,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-
-// {isLoginObj.token !== "" ? (
-//   <SignInSignOutSection />
-// ) 
-// : (
-//   <UserLoginSection />
-// )}
